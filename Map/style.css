@@ -1,0 +1,219 @@
+body {
+   padding: 0;
+   margin: 0;
+   background: darkgrey;
+   position: relative;
+   width: 6100px;
+   height: 4900px;
+}
+
+body > * {
+   visibility: hidden;
+}
+
+.mods {
+   gap: 20px;
+   height: 50px;
+   display: flex;
+   position: sticky;
+   top: 6vh;
+   left: 6vw;
+   z-index: 2;
+   box-sizing: content-box;
+}
+
+.red, .yellow, .green, .blue {
+   width: 55px;
+   height: 55px;
+   border-radius: 50%;
+   opacity: 0.8;
+   z-index: 2;
+   transition: 0.3s ease;
+   outline-offset: -6px;
+}
+
+.red:hover, .yellow:hover, .green:hover, .blue:hover {
+   opacity: 1;
+}
+
+.playButton {
+   width: 55px;
+   height: 55px;
+   border-radius: 50%;
+   opacity: 0.8;
+   z-index: 2;
+   transition: 0.4s ease;
+   background: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.playButton:hover {
+   opacity: 1;
+   filter: invert(100%);
+}
+
+.downloadButton {
+   width: 55px;
+   height: 55px;
+   z-index: 2;
+   background: white;
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   opacity: 0.8;
+   transition: 0.4s ease;
+}
+
+.downloadButton:hover {
+   filter: invert(100%);
+   opacity: 1;
+}
+
+.red {
+   background: salmon;
+}
+
+.yellow {
+   background: yellow;
+}
+
+.green {
+   background: greenyellow;
+}
+
+.blue {
+   background: cyan;
+}
+
+.selectedMod {
+   outline: 6px white solid;
+}
+
+.mapContainer {
+   position: absolute;
+   left: 31.13px;
+   top: 13.62px;
+}
+
+.vborder {
+   height: 5px;
+   width: 40.7px;
+   position: absolute;
+   --mod: white;
+}
+
+.hborder {
+   width: 5px;
+   height: 28.82px;
+   position: absolute;
+   --mod: white;
+}
+
+.map {
+   width: 40.7px;
+   height: 28.82px;
+   position: absolute;
+}
+
+.vborder::before {
+   height: 1px;
+   width: 40.7px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background: var(--mod);
+   transition: 0.4s;
+   content: "";
+}
+
+.hborder::before {
+   height: 28.82px;
+   width: 1px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background: var(--mod);
+   transition: 0.4s;
+   content: "";
+}
+
+.vborder.blocked {
+   --mod: salmon;
+   opacity: 0.8;
+}
+
+.hborder.blocked {
+   --mod: salmon;
+   opacity: 0.8;
+}
+
+.map.blocked {
+   background: salmon;
+   opacity: 0.4;
+}
+
+.hborder:hover::before {
+   width: 5px;
+}
+
+.vborder:hover::before {
+   height: 5px;
+}
+
+.map.portal {
+   background: yellow;
+   opacity: 0.4;
+}
+
+.map#green {
+   background: greenyellow;
+   opacity: 0.4;
+}
+
+.map#blue {
+   background: cyan;
+   opacity: 0.4;
+}
+
+.playButton > img {
+   content: url("assets/play.svg");
+}
+
+.playButton.done > img {
+   content: url("assets/cross.svg");
+}
+
+.disabled {
+   filter: brightness(50%);
+}
+
+.svg {
+   width: 0;
+   height: 0;
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+
+.svg.active {
+   width: 6047.5px;
+   height: 4831.84px;
+}
+
+.path {
+   stroke: #03fff7;
+   stroke-width: 6px;
+   stroke-linejoin: round;
+   fill: none;
+}
+
+@keyframes draw {
+   to {
+      stroke-dashoffset: 0;
+   }
+}
